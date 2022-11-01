@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STU News</title>
+
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="{% static 'js/mdb.min.js' %}"></script>
+</head>
+<body>
+    <!--Main Navigation-->
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+          <div class="position-sticky">
+            <div class="list-group list-group-flush mx-3 mt-4">
+              <a href="home" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+              </a>
+              <a href="news" class="list-group-item list-group-item-action py-2 ripple active">
+                <i class="fas fa-chart-area fa-fw me-3"></i><span>News</span>
+              </a>
+              <a href="events" class="list-group-item list-group-item-action py-2 ripple"><i
+                  class="fas fa-lock fa-fw me-3"></i><span>Events</span></a>
+              <a href="go" class="list-group-item list-group-item-action py-2 ripple"><i
+                  class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Other</span></a>
+              <a href="issues" class="list-group-item list-group-item-action py-2 ripple">
+                <i class="fas fa-chart-pie fa-fw me-3"></i><span>Issues</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+        <!-- Sidebar -->
+
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+          <!-- Container wrapper -->
+          <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+              aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">
+              <h3>
+                STU Kakinada
+              </h3>
+            </a>
+            <!-- Search form -->
+            <form class="d-none d-md-flex input-group w-auto my-auto">
+              <input autocomplete="off" type="search" class="form-control rounded"
+                placeholder='Search ' style="min-width: 225px;" />
+              <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+            </form>
+
+            <!-- Right links -->
+            <ul class="navbar-nav ms-auto d-flex flex-row">
+                <a href="#">
+                    <button type="button" class="btn btn-primary px-3 me-2">
+                        Login
+                    </button>
+                </a>
+            </ul>
+          </div>
+          <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+      </header>
+      <!--Main Navigation-->
+
+      <!--Main layout-->
+      <main style="margin-top: 58px;">
+        <div class="container pt-4">
+          <h3>
+            All News Articles
+          </h3>
+          {% for post in posts reversed%}
+          <div class="card">
+            <a href="/post/{{post.id}}"><h2 style="text-decoration: none; color: black;">{{post.title}}</h2>
+            </a>
+            <h5>{{post.created_at}}</h5>
+            <p>{{post.body|truncatewords:20}}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </main>
+      <!--Main layout-->
+
+</body>
+</html>
