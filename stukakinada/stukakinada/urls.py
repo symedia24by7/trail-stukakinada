@@ -16,14 +16,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('dashboard', views.dashboard, name='dashboard'),
     path('', include('home.urls')),
     path('', include('news.urls')),
     path('', include('events.urls')),
     path('', include('go.urls')),
     path('', include('issues.urls')),
+    path('', include('user_auth.urls')),
+    path('media/download/<str:filename>', views.download, name='download')
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import News_Post
+from .models import newsArticle, image
 
 # Register your models here.
-admin.site.register(News_Post)
+admin.site.register(newsArticle)
+admin.site.register(image)
+

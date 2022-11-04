@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Issues To STU Kakinada</title>
+    <title>STU Kakinada Home Page</title>
 
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -19,10 +19,10 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-              <a href="dashboard" class="list-group-item list-group-item-action py-2 ripple" >
+              <a href="dashboard" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
               </a>
-              <a href="home" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
+              <a href="home" class="list-group-item list-group-item-action py-2 ripple ">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
               </a>
               <a href="news" class="list-group-item list-group-item-action py-2 ripple ">
@@ -32,7 +32,7 @@
                   class="fas fa-lock fa-fw me-3"></i><span>Events</span></a>
               <a href="go" class="list-group-item list-group-item-action py-2 ripple"><i
                   class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Other</span></a>
-              <a href="issues" class="list-group-item list-group-item-action py-2 ripple active">
+              <a href="issues" class="list-group-item list-group-item-action py-2 ripple">
                 <i class="fas fa-chart-pie fa-fw me-3"></i><span>Issues</span>
               </a>
             </div>
@@ -57,20 +57,16 @@
               </h3>
             </a>
             <!-- Search form -->
-            <form class="d-none d-md-flex input-group w-auto my-auto">
+            <form class="d-none d-md-flex input-group w-auto my-auto" action="home" method="post">
+              {% csrf_token %}
               <input autocomplete="off" type="search" class="form-control rounded"
-                placeholder='Search ' style="min-width: 225px;" />
+                placeholder='Search ' style="min-width: 225px;" name="search"/>
               <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
             </form>
 
             <!-- Right links -->
             <ul class="navbar-nav ms-auto d-flex flex-row">
-              {% if user.is_authenticated %}    
-              <a href="/dashboard">
-                <button type="button" class="btn btn-link px-3 me-2">
-                    Dashboard
-                </button>
-              </a>
+              {% if user.is_authenticated %}                  
               <a href="/logout">
                 <button type="button" class="btn btn-primary px-3 me-2">
                     Logout from {{user.username}}
@@ -82,7 +78,7 @@
                         Login
                     </button>
                 </a>
-                {% endif %}
+              {% endif %}
             </ul>
           </div>
           <!-- Container wrapper -->
@@ -93,7 +89,35 @@
 
       <!--Main layout-->
       <main style="margin-top: 58px;">
-        <div class="container pt-4"></div>
+        <div class="container pt-4">
+            <section>
+              <div class="news">
+                <h3 align="center">Add News</h3>
+                <form action="dashboard" method="post" enctype ="multipart/form-data">
+                  {% csrf_token %}                
+                  <div class="form">
+                    <div class="news_name p-2">
+                      <label for="news_name">News Article Name</label>
+                      <input type="text" name="news_name" title="news_name">
+                    </div>              
+                    <div class="news_body p-2">
+                      <label for="news_body">News Article Body</label>
+                      <textarea name="news_body" title="news_body" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="news_images p-2">
+                      <label for="image">Image</label>
+                      <input title="image" name="news_images" type="file" multiple class="form-control-file">
+                    </div>
+                    <div class="date">
+                      <label for="news_date">News Date</label>
+                      <input type="datetime-local" name="news_date" title="news_date">
+                    </div>
+                    <button type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </section>
+        </div>
       </main>
       <!--Main layout-->
 

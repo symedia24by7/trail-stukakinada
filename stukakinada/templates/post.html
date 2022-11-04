@@ -8,9 +8,14 @@
 </head>
 <body>
     <div class="card">
-        <h2 style="text-decoration: none; color: black;">{{posts.title}}</h2>        
-        <h5>{{posts.created_at}}</h5>
-        <p>{{posts.body}}</p>
+        <h2 style="text-decoration: none; color: black;">{{data.posts.title}}</h2>        
+        <h5>{{data.posts.created_at}}</h5>
+        {% for i in data.news_images %}
+        
+        <img src="{{ i.image.url }}" alt="">
+
+        {% endfor %}
+        <p>{{data.posts.body}}</p>
       </div>
 </body>
 </html>

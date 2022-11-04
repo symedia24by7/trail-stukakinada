@@ -19,6 +19,9 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
+              <a href="dashboard" class="list-group-item list-group-item-action py-2 ripple" >
+                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+              </a>
               <a href="home" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
                 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
               </a>
@@ -62,11 +65,24 @@
 
             <!-- Right links -->
             <ul class="navbar-nav ms-auto d-flex flex-row">
-                <a href="#">
+              {% if user.is_authenticated %}    
+              <a href="/dashboard">
+                <button type="button" class="btn btn-link px-3 me-2">
+                    Dashboard
+                </button>
+              </a>
+              <a href="/logout">
+                <button type="button" class="btn btn-primary px-3 me-2">
+                    Logout from {{user.username}}
+                </button>
+              </a>
+              {% else %}
+              <a href="login">
                     <button type="button" class="btn btn-primary px-3 me-2">
                         Login
                     </button>
                 </a>
+                {% endif %}
             </ul>
           </div>
           <!-- Container wrapper -->
@@ -77,7 +93,18 @@
 
       <!--Main layout-->
       <main style="margin-top: 58px;">
-        <div class="container pt-4"></div>
+        <div class="container pt-4">
+          <h3 align="center">
+            Files Available to Download
+          </h3>
+
+          {% for file in files %}
+            <div class="card p-2 text-center w-25 m-2 ">
+              <a href="media/download/{{file}}">{{file}}</a>
+            </div>
+          {% endfor %}
+
+        </div>
       </main>
       <!--Main layout-->
 
