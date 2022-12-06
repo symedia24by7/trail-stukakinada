@@ -8,6 +8,6 @@ class newsArticle(models.Model):
     created_at = models.DateTimeField(default=datetime.now,)
 
 
-class image(models.Model):
+class newsImage(models.Model):
     tag = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/',)

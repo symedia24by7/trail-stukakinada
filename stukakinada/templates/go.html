@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GO's and Other Forms</title>
+    <title>GO's, Pdf's and Forms</title>
 
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -15,80 +15,67 @@
 <body>
     <!--Main Navigation-->
     <header>
-        <!-- Sidebar -->
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-          <div class="position-sticky">
-            <div class="list-group list-group-flush mx-3 mt-4">
-              <a href="dashboard" class="list-group-item list-group-item-action py-2 ripple" >
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
-              </a>
-              <a href="home" class="list-group-item list-group-item-action py-2 ripple " aria-current="true">
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
-              </a>
-              <a href="news" class="list-group-item list-group-item-action py-2 ripple ">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>News</span>
-              </a>
-              <a href="events" class="list-group-item list-group-item-action py-2 ripple"><i
-                  class="fas fa-lock fa-fw me-3"></i><span>Events</span></a>
-              <a href="go" class="list-group-item list-group-item-action py-2 ripple active"><i
-                  class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Other</span></a>
-              <a href="issues" class="list-group-item list-group-item-action py-2 ripple">
-                <i class="fas fa-chart-pie fa-fw me-3"></i><span>Issues</span>
-              </a>
-            </div>
-          </div>
-        </nav>
-        <!-- Sidebar -->
+<!-- Sidebar -->
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar scollapse bg-white">
+<div class="position-sticky">
+<div class="list-group list-group-flush mx-3 mt-4">
+<a href="dashboard" class="list-group-item list-group-item-action py-2 ripple" >
+<i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+</a>
+<a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+<i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+</a>
+<a href="news" class="list-group-item list-group-item-action py-2 ripple  ">
+<i class="fas fa-chart-area fa-fw me-3"></i><span>News</span>
+</a>
+<a href="events" class="list-group-item list-group-item-action py-2 ripple"><i
+class="fas fa-lock fa-fw me-3"></i><span>Events</span></a>
+<a href="go" class="list-group-item list-group-item-action py-2 ripple active"><i
+class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Other</span></a>
+<a href="issues" class="list-group-item list-group-item-action py-2 ripple">
+<i class="fas fa-chart-pie fa-fw me-3"></i><span>Issues</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Sidebar -->
 
-        <!-- Navbar -->
-        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-          <!-- Container wrapper -->
-          <div class="container-fluid">
-            <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
-              aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="fas fa-bars"></i>
-            </button>
+<!-- Navbar -->
+<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+<!-- Container wrapper -->
+<div class="container-fluid justify-content-around">
 
-            <!-- Brand -->
-            <a class="navbar-brand" href="#">
-              <h3>
-                STU Kakinada
-              </h3>
-            </a>
-            <!-- Search form -->
-            <form class="d-none d-md-flex input-group w-auto my-auto">
-              <input autocomplete="off" type="search" class="form-control rounded"
-                placeholder='Search ' style="min-width: 225px;" />
-              <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-            </form>
+<div class="navbar-brand">
+<h3>
+STU Kakinada
+</h3>
+</div>
 
-            <!-- Right links -->
-            <ul class="navbar-nav ms-auto d-flex flex-row">
-              {% if user.is_authenticated %}    
-              <a href="/dashboard">
-                <button type="button" class="btn btn-link px-3 me-2">
-                    Dashboard
-                </button>
-              </a>
-              <a href="/logout">
-                <button type="button" class="btn btn-primary px-3 me-2">
-                    Logout from {{user.username}}
-                </button>
-              </a>
-              {% else %}
-              <a href="login">
-                    <button type="button" class="btn btn-primary px-3 me-2">
-                        Login
-                    </button>
-                </a>
-                {% endif %}
-            </ul>
-          </div>
-          <!-- Container wrapper -->
-        </nav>
-        <!-- Navbar -->
-      </header>
+<!-- Toggle button -->
+<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
+>
+<img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
+</button>
+
+<div class="collapse navbar-collapse justify-content-between" id="navbarData">
+<div class="container">
+<ul class="navbar-nav justify-content-center">
+<li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="news">News</a></li>
+<li class="nav-item"><a class="nav-link" href="events">Events</a></li>
+<li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
+<li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
+<li class="nav-item"><a class="nav-link" href="about">About us</a></li>
+</ul>
+</div>
+</div>
+<!-- Right links -->
+</div>
+<!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+    </header>
       <!--Main Navigation-->
 
       <!--Main layout-->
@@ -97,13 +84,21 @@
           <h3 align="center">
             Files Available to Download
           </h3>
-
-          {% for file in files %}
-            <div class="card p-2 text-center w-25 m-2 ">
-              <a href="media/download/{{file}}">{{file}}</a>
+        <div class="list-group list-group-flush pt-4">
+            <div class="container-fluid">
+                <div class="row">
+                <div class="col">
+                {% for file in files %}
+                <a href="media/download/{{file}}">
+                <button type="button" class="list-group-item list-group-item-action ripple text-center p-3 m-2">
+                {{file}}
+                </button>
+                </a>
+                {% endfor %}
+                </div>
+                </div>
             </div>
-          {% endfor %}
-
+        </div>
         </div>
       </main>
       <!--Main layout-->

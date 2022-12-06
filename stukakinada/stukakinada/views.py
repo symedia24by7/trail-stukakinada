@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
-from news.models import newsArticle, image
+from news.models import newsArticle, newsImage
 import mimetypes
 import os
 
 
 def index(request):
-    return render(request, 'home.html')
+    return redirect('home')
 
 
 def dashboard(request):
@@ -24,7 +24,7 @@ def dashboard(request):
         res = newsArticle.objects.create(title=news_name, body=news_body, created_at=news_date)
 
         for f in request.FILES.getlist('news_images'):
-            image.objects.create(tag=news_name, image=f)
+            newsImage.objects.create(tag=news_name, image=f)
 
         if res:
             return redirect('news')

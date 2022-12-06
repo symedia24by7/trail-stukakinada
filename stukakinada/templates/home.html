@@ -43,87 +43,218 @@
         <!-- Navbar -->
         <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
           <!-- Container wrapper -->
-          <div class="container-fluid">
-            <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
-              aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="fas fa-bars"></i>
-            </button>
+          <div class="container-fluid justify-content-around">
 
-            <!-- Brand -->
-            <a class="navbar-brand" href="#">
+            <div class="navbar-brand">
               <h3>
                 STU Kakinada
               </h3>
-            </a>
-            <!-- Search form -->
-            <form class="d-none d-md-flex input-group w-auto my-auto">
-              <input autocomplete="off" type="search" class="form-control rounded"
-                placeholder='Search ' style="min-width: 225px;" />
-              <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
-            </form>
+            </div>
 
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+              aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
+              >
+              <img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-between" id="navbarData">
+              <div class="container">
+                  <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about">About us</a></li>
+                  </ul>
+              </div>
+            </div>
             <!-- Right links -->
-            <ul class="navbar-nav ms-auto d-flex flex-row">
-              {% if user.is_authenticated %}    
-              <a href="/dashboard">
-                <button type="button" class="btn btn-link px-3 me-2">
-                    Dashboard
-                </button>
-              </a>
-              <a href="/logout">
-                <button type="button" class="btn btn-primary px-3 me-2">
-                    Logout from {{user.username}}
-                </button>
-              </a>
-              {% else %}
-              <a href="login">
-                    <button type="button" class="btn btn-primary px-3 me-2">
-                        Login
-                    </button>
-                </a>
-                {% endif %}
-            </ul>
           </div>
           <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
-      </header>
+    </header>
       <!--Main Navigation-->
 
       <!--Main layout-->
       <main style="margin-top: 58px;">
-        <div class="container pt-4">
-            <h3>
-                Latest News
-            </h3>
+        <div class="container pt-4" align="center">
+          <!-- Carousel wrapper -->
+          <div id="carouselMaterialStyle" class="carousel slide carousel-dark w-75" data-mdb-ride="carousel">
 
-            {% if data.search %}
-            
-            <h5>
-              Searched Text: {{data.search}}
-            </h5>
+            <!-- Inner -->
+            <div class="carousel-inner rounded-5 shadow-4-strong">
+              <!-- Single item -->
+              <div class="carousel-item active">
+                <img src="{% static 'img/banner_stu_kkd.jpeg' %}" class="d-block cimg w-100"
+                  alt="Sunset Over the City" height="300"/>
+                <div class="carousel-caption d-none d-md-block">
 
-            <h4>Results Are: </h4>
+                </div>
+              </div>
 
-            {% for news in data.news %}
-            <div class="card m-4">
-              <div class="card-header" style="font-size: x-large;">
-                <a href="/news/{{news.id}}" style="text-decoration: none; color: black;">{{news.title}}</a>
-              </div>
-              <div class="card-body">
-                <p class="card-text">{{news.body|truncatewords:20}}</p>
-              </div>
-  
-              <div class="card-footer">
-                  Posted at: {{news.created_at}}
-              </div>
-  
+            <div class="carousel-item">
+            <a href="{{data.caro_events.link}}">
+            <img src="{{data.caro_events.image.image.url}}" class="d-block cimg w-100"
+            alt="Sunset Over the City" height="300"/>
+            </a>
+                <div class="carousel-caption d-none d-md-block">
+
+                </div>
             </div>
-            {% endfor %}
-            {% endif %}
+
+            <div class="carousel-item ">
+                 <a href="{{data.caro_news.link}}">
+            <img src="{{data.caro_news.image.image.url}}" class="d-block cimg w-100"
+            alt="Sunset Over the City" height="300"/>
+                 </a>
+                <div class="carousel-caption d-none d-md-block">
+
+                </div>
+            </div>
+
+
+            </div>
+            <!-- Inner -->
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-mdb-target="#carouselMaterialStyle" data-mdb-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <!-- Carousel wrapper -->
+
+          <section class="News pt-4">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col mx-3" align="left">
+                        <h2>
+                            Latest News
+                        </h2>
+                    </div>
+                <div class="col px-5" align="right">
+                    <h2>
+                        <a href="/news" style="text-decoration: underline; color: black; font-size: x-large;">View All</a>
+                    </h2>
+                </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row">
+                {% for post in data.posts %}
+                <div class="col">
+                    <div class="card m-2 h-100">
+                        <div class="card-header" style="font-size: x-large;">
+                            <a href="/news/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{post.body|truncatewords:20}}</p>
+                        </div>
+                        <div class="card-footer">
+                            Posted at: {{post.created_at}}
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+
+          </section>
+
+          <section class="Events pt-4">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col mx-3" align="left">
+                        <h2>
+                            Latest Events
+                        </h2>
+                    </div>
+                <div class="col px-5" align="right">
+                    <h2>
+                        <a href="/events" style="text-decoration: underline; color: black; font-size: x-large;">View All</a>
+                    </h2>
+                </div>
+                </div>
+            </div>
+
+            <div class="container-fluid">
+            <div class="row">
+                {% for post in data.events %}
+                <div class="col">
+                    <div class="card m-2 h-100">
+                        <div class="card-header" style="font-size: x-large;">
+                            <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
+                        </div>
+                        {% if post.hasImage %}
+                        <div class="card-body">
+                            <img class="card-img" src={{post.img.image.url}} style="height: 25vh; width: auto;">
+                        </div>
+                        {% else %}
+                        <div class="card-body">
+                            <p class="card-text">{{post.body|truncatewords:20}}</p>
+                        </div>
+                        {% endif %}
+                        <div class="card-footer">
+                            Posted at: {{post.created_at}}
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                </div>
+            </div>
+
+          </section>
+
+          <section class="GOs_and_Pdfs pt-4 ps-4 pb-5">
+            <h3 align="left" class="pt-2, pb-2">
+              Latest PDF's, GO's and Forms
+            </h3>
+            <h4 align="left">
+                Click To Download
+            </h4>
+            <div class="list-group list-group-flush pt-4">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                        {% for file in data.files_p1 %}
+                        <a href="media/download/{{file}}">
+                            <button type="button" class="list-group-item list-group-item-action ripple w-75">
+                                {{file}}
+                            </button>
+                        </a>
+                        {% endfor %}
+                        </div>
+                        <div class="col">
+                        {% for file in data.files_p2 %}
+                        <a href="media/download/{{file}}">
+                            <button type="button" class="list-group-item list-group-item-action ripple w-75">
+                                {{file}}
+                            </button>
+                        </a>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 align="right" class="pt-4 pb-2 pe-5">
+                <a href="/go" style="color: black;"> View more &#x2192</a>
+            </h4>
+          </section>
 
         </div>
+
+
+
       </main>
       <!--Main layout-->
 

@@ -37,3 +37,19 @@ padding-top: 0.5rem;
 overflow-x: hidden;
 overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
+
+.carousel-item img{
+    max-height: 25vh;
+}
+
+#navbarData{
+    visibility: hidden;
+}
+
+@media (max-width: 768px){
+
+#navbarData{
+    visibility: visible;
+}
+
+}

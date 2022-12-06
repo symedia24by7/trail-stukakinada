@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
-from django.http.response import HttpResponse
-import mimetypes
+
 import os
 
 
