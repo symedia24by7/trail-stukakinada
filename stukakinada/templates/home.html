@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="{% static 'js/mdb.min.js' %}"></script>
 </head>
 <body>
@@ -19,21 +20,21 @@
         <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-              <a href="dashboard" class="list-group-item list-group-item-action py-2 ripple" >
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
-              </a>
               <a href="home" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
-                <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+                <i class="fa fa-home fa-fw me-3"></i><span>Home</span>
               </a>
               <a href="news" class="list-group-item list-group-item-action py-2 ripple ">
-                <i class="fas fa-chart-area fa-fw me-3"></i><span>News</span>
+                <i class="fa fa-newspaper fa-fw me-3"></i><span>News</span>
               </a>
               <a href="events" class="list-group-item list-group-item-action py-2 ripple"><i
-                  class="fas fa-lock fa-fw me-3"></i><span>Events</span></a>
+                  class="fas fa-image fa-fw me-3"></i><span>Events</span></a>
               <a href="go" class="list-group-item list-group-item-action py-2 ripple"><i
-                  class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Other</span></a>
+                  class="fas fa-file fa-fw me-3"></i><span>GO's and Forms</span></a>
               <a href="issues" class="list-group-item list-group-item-action py-2 ripple">
-                <i class="fas fa-chart-pie fa-fw me-3"></i><span>Issues</span>
+              <i class="fa-solid fa-circle-exclamation fa-fw me-3"></i><span>Raise an Issue</span>
+              </a>
+              <a href="about" class="list-group-item list-group-item-action py-2 ripple">
+              <i class="fas fa-address-card fa-fw me-3"></i><span>About us</span>
               </a>
             </div>
           </div>
@@ -51,6 +52,20 @@
               </h3>
             </div>
 
+          <form class="d-flex input-group w-auto" action="search" id="search_form">
+          <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          name="q"
+          />
+          <span class="input-group-text border-0" id="search-addon">
+          <i class="fa fa-search"></i>
+          </span>
+          </form>
+
             <!-- Toggle button -->
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
               aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
@@ -58,7 +73,7 @@
               <img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
             </button>
 
-            <div class="collapse navbar-collapse justify-content-between" id="navbarData">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarData">
               <div class="container">
                   <ul class="navbar-nav justify-content-center">
                     <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
@@ -150,8 +165,8 @@
             <div class="container-fluid">
                 <div class="row">
                 {% for post in data.posts %}
-                <div class="col">
-                    <div class="card m-2 h-100">
+                <div class="col m-2">
+                    <div class="card h-100">
                         <div class="card-header" style="font-size: x-large;">
                             <a href="/news/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
                         </div>
@@ -189,8 +204,8 @@
             <div class="container-fluid">
             <div class="row">
                 {% for post in data.events %}
-                <div class="col">
-                    <div class="card m-2 h-100">
+                <div class="col m-2">
+                    <div class="card h-100">
                         <div class="card-header" style="font-size: x-large;">
                             <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
                         </div>
@@ -222,24 +237,15 @@
             <h4 align="left">
                 Click To Download
             </h4>
-            <div class="list-group list-group-flush pt-4">
+            <div class="list-group list-group-flush pt-4" >
                 <div class="container-fluid">
-                    <div class="row">
+                    <div class="row w-75">
                         <div class="col">
-                        {% for file in data.files_p1 %}
-                        <a href="media/download/{{file}}">
-                            <button type="button" class="list-group-item list-group-item-action ripple w-75">
-                                {{file}}
-                            </button>
-                        </a>
-                        {% endfor %}
-                        </div>
-                        <div class="col">
-                        {% for file in data.files_p2 %}
-                        <a href="media/download/{{file}}">
-                            <button type="button" class="list-group-item list-group-item-action ripple w-75">
-                                {{file}}
-                            </button>
+                        {% for file in data.files %}
+                        <a href="{{file.file.url}}">
+                        <button type="button" class="list-group-item list-group-item-action ripple text-center p-3 m-2">
+                        {{file.filename}}
+                        </button>
                         </a>
                         {% endfor %}
                         </div>

@@ -19,9 +19,6 @@
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar scollapse bg-white">
 <div class="position-sticky">
 <div class="list-group list-group-flush mx-3 mt-4">
-<a href="dashboard" class="list-group-item list-group-item-action py-2 ripple" >
-<i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
-</a>
 <a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
 <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
 </a>
@@ -31,9 +28,12 @@
 <a href="events" class="list-group-item list-group-item-action py-2 ripple "><i
 class="fas fa-lock fa-fw me-3"></i><span>Events</span></a>
 <a href="go" class="list-group-item list-group-item-action py-2 ripple "><i
-class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Other</span></a>
+class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Forms</span></a>
 <a href="issues" class="list-group-item list-group-item-action py-2 ripple active">
-<i class="fas fa-chart-pie fa-fw me-3"></i><span>Issues</span>
+<i class="fas fa-chart-pie fa-fw me-3"></i><span>Raise an Issue</span>
+</a>
+<a href="about" class="list-group-item list-group-item-action py-2 ripple">
+     <i class="fas fa-chart-pie fa-fw me-3"></i><span>About us</span>
 </a>
 </div>
 </div>
@@ -50,6 +50,20 @@ class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Other</span></a>
 STU Kakinada
 </h3>
 </div>
+
+<form class="d-flex input-group w-auto" action="search">
+<input
+type="search"
+class="form-control rounded"
+placeholder="Search"
+aria-label="Search"
+aria-describedby="search-addon"
+name="q"
+/>
+<span class="input-group-text border-0" id="search-addon">
+<i class="fas fa-search"></i>
+</span>
+</form>
 
 <!-- Toggle button -->
 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"

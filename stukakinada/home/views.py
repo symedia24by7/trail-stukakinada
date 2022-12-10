@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from news.models import newsArticle, newsImage
 from events.models import event, eventImage
+from go.models import File
 from django.conf import settings
 import os
 
@@ -9,17 +10,11 @@ def home(request):
     news_list = newsArticle.objects.all()
     events = event.objects.all()
 
-
-    path = settings.MEDIA_ROOT + '\\download'
-    files = get_files(path)
-
     rev_list_news = list(news_list)
     rev_list_events = list(events)
-    rev_list_pdfs = list(files)
 
     rev_list_news.reverse()
     rev_list_events.reverse()
-    rev_list_pdfs.reverse()
 
     if len(rev_list_news) > 3:
         final_list_news = [rev_list_news[0], rev_list_news[1], rev_list_news[2]]
@@ -31,15 +26,6 @@ def home(request):
     else:
         final_list_events = rev_list_events
 
-    if len(rev_list_pdfs) > 6:
-        pdfs = [rev_list_pdfs[0], rev_list_pdfs[1], rev_list_pdfs[2], rev_list_pdfs[3], rev_list_pdfs[4], rev_list_pdfs[5]]
-    else:
-        pdfs = rev_list_pdfs
-
-    length = len(pdfs)
-    mid_index = length // 2
-    first_half = pdfs[:mid_index]
-    second_half = pdfs[mid_index:]
 
     for p in final_list_events:
         eventImages = eventImage.objects.filter(tag=p.title)
@@ -61,10 +47,22 @@ def home(request):
             e1ImgObj = ImageObject(e1Images[0], "/events/" + str(i.id))
             break
 
+    files : File = []
+
+    all_files = File.objects.all()
+    rev_files = list(all_files)
+    rev_files.reverse()
+
+    final_files = []
+
+    if len(rev_files) > 6:
+        final_files = [rev_files[0], rev_files[1], rev_files[2], rev_files[3], rev_files[4], rev_files[5]]
+    else:
+        final_files = rev_files
+
     data = {'posts': final_list_news,
             'events': final_list_events,
-            'files_p1': first_half,
-            "files_p2": second_half,
+            'files': final_files,
             "caro_news": n1ImgObj,
             "caro_events": e1ImgObj}
 
@@ -72,16 +70,28 @@ def home(request):
 
 
 def search(request):
-    news: newsArticle = []
-    if request.method == "POST":
-        search_text = str(request.POST["search"]).lower()
+    news = []
+    events = []
+    files = []
+    if request.method == "GET":
+        search_text = str(request.GET["q"]).lower()
         all_news = newsArticle.objects.all()
+        all_events = event.objects.all()
+        all_files = File.objects.all()
         for n in all_news:
             t = str(n.title).lower()
             if search_text in t:
                 news.append(n)
+        for e in all_events:
+            t = str(e.title).lower()
+            if search_text in t:
+                events.append(e)
+        for f in all_files:
+            t = str(f.filename).lower()
+            if search_text in t:
+                files.append(f)
 
-        data = {"search": search_text, 'news': news}
+        data = {"search": search_text, 'news': news, 'events' : events, 'files' : files}
         return render(request, 'search.html', {'data': data})
 
     return render(request, 'search.html')

@@ -46,10 +46,10 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     visibility: hidden;
 }
 
-@media (max-width: 768px){
+@media (max-width: 991.8px){
 
-#navbarData{
-    visibility: visible;
-}
+    #navbarData{
+        visibility: visible;
+    }
 
 }

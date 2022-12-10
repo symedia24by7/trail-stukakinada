@@ -9,29 +9,6 @@ import os
 def index(request):
     return redirect('home')
 
-
-def dashboard(request):
-    if not auth.get_user(request).is_authenticated:
-        return redirect('login')
-    if request.method == "POST":
-        news_name = request.POST["news_name"]
-        news_body = request.POST["news_body"]
-        news_date = request.POST["news_date"]
-
-        if not news_body or not news_name or not news_date:
-            return render(request, 'dashboard.html')
-
-        res = newsArticle.objects.create(title=news_name, body=news_body, created_at=news_date)
-
-        for f in request.FILES.getlist('news_images'):
-            newsImage.objects.create(tag=news_name, image=f)
-
-        if res:
-            return redirect('news')
-
-    return render(request, 'dashboard.html')
-
-
 def download(request, filename):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     # Define the full file path

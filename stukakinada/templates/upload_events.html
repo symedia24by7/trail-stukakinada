@@ -1,0 +1,196 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Upload a New Event</title>
+
+<link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
+<link rel="stylesheet" href="{% static 'css/home.css' %}" />
+<script src="{% static 'js/mdb.min.js' %}"></script>
+</head>
+<body>
+<!--Main Navigation-->
+<header>
+<!-- Sidebar -->
+<nav
+id="sidebarMenu"
+class="collapse d-lg-block sidebar scollapse bg-white"
+>
+<div class="position-sticky">
+<div class="list-group list-group-flush mx-3 mt-4">
+<a
+href="/home"
+class="list-group-item list-group-item-action py-2 ripple"
+aria-current="true"
+>
+<i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+</a>
+<a
+href="/news"
+class="list-group-item list-group-item-action py-2 ripple"
+>
+<i class="fas fa-chart-area fa-fw me-3"></i><span>News</span>
+</a>
+<a
+href="/events"
+class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-lock fa-fw me-3"></i><span>Events</span></a
+>
+<a
+href="/go"
+class="list-group-item list-group-item-action py-2 ripple"
+><i class="fas fa-chart-line fa-fw me-3"></i
+><span>GO's and Forms</span></a
+>
+<a
+href="/issues"
+class="list-group-item list-group-item-action py-2 ripple"
+>
+<i class="fas fa-chart-pie fa-fw me-3"></i><span>Raise an Issue</span>
+</a>
+<a
+href="/about"
+class="list-group-item list-group-item-action py-2 ripple"
+>
+<i class="fas fa-chart-pie fa-fw me-3"></i><span>About us</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Sidebar -->
+
+<!-- Navbar -->
+<nav
+id="main-navbar"
+class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
+>
+<!-- Container wrapper -->
+<div class="container-fluid justify-content-around">
+<div class="navbar-brand">
+<h3>STU Kakinada</h3>
+</div>
+
+<form class="d-flex input-group w-auto" action="search">
+<input
+type="search"
+class="form-control rounded"
+placeholder="Search"
+aria-label="Search"
+aria-describedby="search-addon"
+name="q"
+/>
+<span class="input-group-text border-0" id="search-addon">
+<i class="fas fa-search"></i>
+</span>
+</form>
+
+<!-- Toggle button -->
+<button
+class="navbar-toggler"
+type="button"
+data-mdb-toggle="collapse"
+data-mdb-target="#navbarData"
+aria-controls="sidebarMenu"
+aria-expanded="false"
+aria-label="Toggle navigation"
+>
+<img
+src="{% static 'img/toggle.webp' %}"
+alt=""
+style="width: 3rem;"
+/>
+</button>
+
+<div
+class="collapse navbar-collapse justify-content-between"
+id="navbarData"
+>
+<div class="container">
+<ul class="navbar-nav justify-content-center">
+<li class="nav-item">
+<a class="nav-link" href="/home">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/news">News</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/events">Events</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/go">GO's and Forms</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/issues">Raise an Issue</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/about">About us</a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Right links -->
+</div>
+<!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px;">
+<div class="container pt-4">
+<section>
+<div class="news">
+<h3 align="center">Add Event</h3>
+<form
+action="events"
+method="post"
+enctype="multipart/form-data"
+>
+{% csrf_token %}
+<div class="form">
+<div class="event_name p-2">
+<label for="event_name">Event Name</label>
+<input type="text" name="event_name" title="event_name" />
+</div>
+<div class="event_body p-2">
+<label for="event_body">News Article Body</label>
+<textarea
+name="event_body"
+title="event_body"
+cols="30"
+rows="10"
+></textarea>
+</div>
+<div class="event_image p-2">
+<label for="image">Image</label>
+<input
+title="image"
+name="event_images"
+type="file"
+multiple
+class="form-control-file"
+/>
+</div>
+<div class="date">
+<label for="event_date">News Date</label>
+<input
+type="datetime-local"
+name="event_date"
+title="event_date"
+/>
+</div>
+<button type="submit">Submit</button>
+</div>
+</form>
+</div>
+</section>
+</div>
+</main>
+<!--Main layout-->
+</body>
+</html>

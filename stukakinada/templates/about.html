@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+
+    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="{% static 'js/mdb.min.js' %}"></script>
+
+    <style>
+        img{
+            position: relative;
+            border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%; border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%;
+            aspect-ratio: 1;
+            width: 250px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar scollapse bg-white">
+        <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+        <a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Home</span>
+        </a>
+        <a href="news" class="list-group-item list-group-item-action py-2 ripple  ">
+        <i class="fas fa-chart-area fa-fw me-3"></i><span>News</span>
+        </a>
+        <a href="events" class="list-group-item list-group-item-action py-2 ripple"><i
+        class="fas fa-lock fa-fw me-3"></i><span>Events</span></a>
+        <a href="go" class="list-group-item list-group-item-action py-2 ripple"><i
+        class="fas fa-chart-line fa-fw me-3"></i><span>GO's and Forms</span></a>
+        <a href="issues" class="list-group-item list-group-item-action py-2 ripple">
+        <i class="fas fa-chart-pie fa-fw me-3"></i><span>Raise an Issue</span>
+        </a>
+        <a href="about" class="list-group-item list-group-item-action py-2 ripple active">
+        <i class="fas fa-chart-pie fa-fw me-3"></i><span>About us</span>
+        </a>
+        </div>
+        </div>
+        </nav>
+        <!-- Sidebar -->
+
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <!-- Container wrapper -->
+        <div class="container-fluid justify-content-around">
+
+        <div class="navbar-brand">
+        <h3>
+        STU Kakinada
+        </h3>
+        </div>
+
+        <form class="d-flex input-group w-auto" action="search">
+        <input
+        type="search"
+        class="form-control rounded"
+        placeholder="Search"
+        aria-label="Search"
+        aria-describedby="search-addon"
+        name="q"
+        />
+        <span class="input-group-text border-0" id="search-addon">
+        <i class="fas fa-search"></i>
+        </span>
+        </form>
+
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
+        >
+        <img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarData">
+        <div class="container">
+        <ul class="navbar-nav text-center">
+        <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="news">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="events">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
+        <li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
+        <li class="nav-item"><a class="nav-link" href="about">About us</a></li>
+        </ul>
+        </div>
+        </div>
+        <!-- Right links -->
+        </div>
+        <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+        </header>
+        <main style="margin-top: 58px;">
+            <div class="container pt-4">
+                <div class="row">
+                <div class="col-12 col-md-6 ">
+                        <div class="card m-2 text-center">
+                            <div class="bg-image hover-overlay" data-mdb-ripple-color="light">
+                              <img src="{% static '/img/yagna.jpg'%}" class="img-fluid p-2"/>
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">Yagna Kusumanchi @SYMedia</h5>
+                              <p class="card-text">Python Programmer and Frontend Developer</p>
+                              <a href="mailto:Yagna82kb@gmail.com" class="link-dark">Yagna82kb@gmail.com</a> <br><br>
+                              <a href="tel:+919014976938" class="link-dark">+919014976938</a>
+                            </div>
+                          </div>
+                    </div>
+                <div class=" col-12 col-md-6">
+                        <div class="card m-2 text-center">
+                            <div class="bg-image hover-overlay" data-mdb-ripple-color="light">
+                              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid p-2"/>
+                            </div>
+                            <div class="card-body">
+                              <h5 class="card-title">Samba Siva Rao Kovvuru @SYMedia</h5>
+                              <p class="card-text">C++ Programmer and Backend Developer</p>
+                              <a href="mailto:beautiful110g@gmail.com" class="link-dark">beautiful110g@gmail.com</a> <br><br>
+                              <a href="tel:+917981041334" class="link-dark">+917981041334</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+</body>
+</html>

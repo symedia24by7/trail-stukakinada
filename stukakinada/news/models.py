@@ -1,7 +1,6 @@
 from datetime import datetime
 from django.db import models
 
-
 class newsArticle(models.Model):
     title = models.CharField(max_length=100)
     body = models.CharField(max_length=10000000)

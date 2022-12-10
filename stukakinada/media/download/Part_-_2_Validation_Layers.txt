@@ -1,0 +1,21 @@
+To enable and Validation Layers:
+    -> They are used to debug the code of the app and behaviour of the vulkan api in background
+    -> We can use many validation layers that are available on the machine and api
+    -> By default the sdk provided by LunarG has a very good bundle of Validation Layers
+    -> That is "VK_LAYER_KHRONOS_validation"
+    -> We need to add this text to our validation layers list in private fields
+    -> Now, we need to check whether the required validation layers are available or not
+    -> Now create a way to receive messages for to show in debug or in terminal
+    -> Create a Debug Callback
+    -> Add DebugMessenger as private variable
+    -> Create and Fill in VkDebugUtilsMessengerCreateInfoEXT struct and add pass debug-Callback func as debugCallback
+    -> Get Create and Destroy DebugMessenger Functions as they are part of a extension not the api itself!
+    -> Create DebugMessenger Obj using just brought createDebugMessengerEXT Function 
+    -> After use destroy the obj in cleanup with just brought destroyDebugMessengerEXT Function
+    -> This is all good but, this type of debugging cant help with create and destroy VkInstance functions
+    -> So we pass the VkDebugUtilsMessengerCreateInfoEXT struct to the pNext field in VkInstanceCreateInfo struct
+
+Note:
+    -> Keep in mind that validation layers slow down the app i.e reduce the perfomance
+    -> So use them only in debug and clean them up in release build to reduce size and increase performance
+    -> Destroy DebugMessenger obj before destroying VkInstance Obj0

@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.conf import settings
+from .models import File
 
 import os
 
 
 def go(request):
-    path = settings.MEDIA_ROOT + '\\download'
-    files = get_files(path)
-    return render(request, 'go.html', {'files': files})
+
+    all_files = File.objects.all()
+
+    return render(request, 'go.html', {'files': all_files})
 
 
 def get_files(dir_path):
