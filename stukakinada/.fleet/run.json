@@ -3,7 +3,7 @@
         {
             "type": "python",
             "name": "Run",
-            "arguments": ["manage.py", "runserver", "0.0.0.0:80"],
+            "arguments": ["manage.py", "runserver"],
         },
 
     ]
