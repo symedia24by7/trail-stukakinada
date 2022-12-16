@@ -17,9 +17,18 @@
 .m-top{
 margin-top: 58px;!important
 }
+.jca{
+justify-content:flex-start!important
+}
 @media (max-width:991.8px){
 .m-top{
 margin-top: 100px;!important
+}
+#sidebarMenu{
+    margin-top: 30px;
+}
+.jca{
+justify-content:space-around!important
 }
 }
 </style>
@@ -56,7 +65,7 @@ margin-top: 100px;!important
         <!-- Navbar -->
         <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
           <!-- Container wrapper -->
-          <div class="container-fluid justify-content-around">
+          <div class="container-fluid jca">
 
             <div class="navbar-brand">
             <img src="{% static 'img/logo.png' %}" width="45">
@@ -77,24 +86,11 @@ margin-top: 100px;!important
           </form>
 
             <!-- Toggle button -->
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
               aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
               >
               <i class="fas fa-bars"></i>
             </button>
-
-                <div class="collapse navbar-collapse justify-content-between" id="navbarData">
-              <div class="container">
-                  <ul class="navbar-nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="news">News</a></li>
-                    <li class="nav-item"><a class="nav-link" href="events">Events</a></li>
-                    <li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
-                    <li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about">About us</a></li>
-                  </ul>
-              </div>
-            </div>
             <!-- Right links -->
           </div>
           <!-- Container wrapper -->
@@ -129,7 +125,7 @@ margin-top: 100px;!important
             <div class="container-fluid">
                 <div class="row">
                 <div class="col">
-                {% for file in files %}
+                {% for file in files reversed %}
                 <a href="{{file.file.url}}">
                 <button type="button" class="list-group-item list-group-item-action ripple text-center p-3 m-2">
                 {{file.filename}}

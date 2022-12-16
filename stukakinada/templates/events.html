@@ -3,30 +3,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events in STU Kakinada</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STU News</title>
 
-    <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
-    <link rel="stylesheet" href="{% static 'css/fa.css' %}">
-    <script src="{% static 'js/mdb.min.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/mdb.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/fa.css' %}">
+<script src="{% static 'js/mdb.min.js' %}"></script>
+
 <style>
 .m-top{
 margin-top: 58px;!important
 }
 .card{
 max-width: 75%;
-}@media (max-width:991.8px){
+}
+.jca{
+    justify-content:flex-start!important
+}
+@media (max-width:991.8px){
 .m-top{
 margin-top: 100px;!important
 }
+#sidebarMenu{
+    margin-top: 30px;
+}
+.jca{
+justify-content:space-around!important
+}
 }
 </style>
+
 </head>
 <body>
-    <!--Main Navigation-->
+<!--Main Navigation-->
 <header>
 <!-- Sidebar -->
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
@@ -35,7 +47,7 @@ margin-top: 100px;!important
 <a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
 <i class="fa fa-home fa-fw me-3"></i><span>Home</span>
 </a>
-<a href="news" class="list-group-item list-group-item-action py-2 ripple ">
+<a href="news" class="list-group-item list-group-item-action py-2 ripple">
 <i class="fa fa-newspaper fa-fw me-3"></i><span>News</span>
 </a>
 <a href="events" class="list-group-item list-group-item-action py-2 ripple active"><i
@@ -56,7 +68,7 @@ class="fas fa-file fa-fw me-3"></i><span>GO's and Forms</span></a>
 <!-- Navbar -->
 <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
 <!-- Container wrapper -->
-<div class="container-fluid justify-content-around">
+<div class="container-fluid jca">
 
 <div class="navbar-brand">
 <img src="{% static 'img/logo.png' %}" width="45">
@@ -77,100 +89,92 @@ name="q"
 </form>
 
 <!-- Toggle button -->
-<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
 aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
 >
 <i class="fas fa-bars"></i>
 </button>
-
-<div class="collapse navbar-collapse justify-content-between" id="navbarData">
-<div class="container">
-<ul class="navbar-nav justify-content-center">
-<li class="nav-item"><a class="nav-link" href="home">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="news">News</a></li>
-<li class="nav-item"><a class="nav-link" href="events">Events</a></li>
-<li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
-<li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
-<li class="nav-item"><a class="nav-link" href="about">About us</a></li>
-</ul>
-</div>
-</div>
 <!-- Right links -->
 </div>
 <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
 </header>
-      <!--Main Navigation-->
+<!--Main Navigation-->
 
-      <!--Main layout-->
-      <main class="m-top">
-        <div class="container pt-4">
-        <div class="row">
-        <div class="col">
-        {% if user.is_superuser %}
-        <h3 align="right">
-        All Events
-        </h3>
-        {% else %}
-        <h3 align="center">
-        All Events
-        </h3>
-        {% endif %}
-        </div>
-        {% if user.is_superuser %}
-        <div class="col">
-        <h3 align="right">
-        <a href="upload/events" style="color: black;"> Add Event </a>
-        </h3>
-        </div>
-        {% endif %}
-        </div>
-        <div class="container-fluid">
-        <div class="row" align="center">
-        {% if data.first %}
-        <div class="col">
-        {% for post in data.first reversed %}
-        <div class="card mt-4 mb-4">
-        <div class="card-header" style="font-size: large;">
-        <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
-        </div>
-        <div class="card-body" align="left">
-        <p class="card-text">{{post.body|truncatewords:20}}</p>
-        </div>
+<!--Main layout-->
+<main class="m-top">
+<div class="container pt-4">
+<div class="row">
+<div class="col">
+{% if user.is_superuser %}
+<h3 align="right">
+All Events
+</h3>
+{% else %}
+<h3 align="center">
+All Events
+</h3>
+{% endif %}
+</div>
+{% if user.is_superuser %}
+<div class="col">
+<h3 align="right">
+<a href="upload/events" style="color: black;"> Add Event </a>
+</h3>
+</div>
+{% endif %}
+</div>
 
-        <div class="card-footer" align="right" style="font-size: small;">
-        {{post.created_at}}
-        </div>
+<div class="container-fluid">
+<div class="row" align="center">
+{% if data.first %}
+<div class="col">
+{% for post in data.first reversed %}
+<div class="col mt-4 mb-4">
+<div class="card h-100"  style="min-width: 256px;">
+<div class="card-header" style="font-size: large;">
+<a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
+</div>
+<div class="card-body" align="left">
+<p class="card-text">{{post.body|truncatewords:20}}</p>
+</div>
+<div class="card-footer" style="font-size: small" align="right">
+{{post.created_at}}
+</div>
 
-        </div>
-        {% endfor %}
-        </div>
-        {% endif %}
-        {% if data.second %}
-        <div class="col">
-        {% for post in data.second reversed %}
-        <div class="card mt-4 mb-4">
-        <div class="card-header" style="font-size: large;">
-        <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
-        </div>
-        <div class="card-body" align="left">
-        <p class="card-text">{{post.body|truncatewords:20}}</p>
-        </div>
+</div>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+{% if data.second %}
+<div class="col">
+{% for post in data.second reversed %}
+<div class="col mt-4 mb-4">
+<div class="card h-100" style="min-width: 256px;">
+<div class="card-header" style="font-size: large;">
+<a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
+</div>
+<div class="card-body" align="left">
+<p class="card-text">{{post.body|truncatewords:20}}</p>
+</div>
+<div class="card-footer" style="font-size: small" align="right">
+{{post.created_at}}
+</div>
 
-        <div class="card-footer" align="right" style="font-size: small;">
-        {{post.created_at}}
-        </div>
+</div>
+</div>
+{% endfor %}
+</div>
+{% endif %}
 
-        </div>
-        {% endfor %}
-        </div>
-        {% endif %}
-        </div>
-        </div>
-        </div>
-      </main>
-      <!--Main layout-->
+</div>
+</div>
+
+</div>
+</main>
+<!--Main layout-->
 
 </body>
 </html>

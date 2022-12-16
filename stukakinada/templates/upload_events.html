@@ -17,10 +17,19 @@
 .c-width{
 width: 50%;!important
 }
+.jca{
+justify-content:flex-start!important
+}
 @media (max-width: 991.8px){
 .c-width{
 margin-top: 50px;
 width: 100%; !important
+}
+#sidebarMenu{
+    margin-top: 30px;
+}
+.jca{
+justify-content:space-around!important
 }
 }
 .m-top{
@@ -62,7 +71,7 @@ margin-bottom: 10px;
   <!-- Navbar -->
   <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
   <!-- Container wrapper -->
-  <div class="container-fluid justify-content-around">
+  <div class="container-fluid jca">
 
   <div class="navbar-brand">
   <img src="{% static 'img/logo.png' %}" width="45">
@@ -71,7 +80,7 @@ margin-bottom: 10px;
   </h3>
   </div>
 
-  <form class="d-flex input-group w-auto" action="search" id="search_form">
+  <form class="d-flex input-group w-auto" action="/search" id="search_form">
   <input
   type="search"
   class="form-control rounded"
@@ -83,24 +92,11 @@ margin-bottom: 10px;
   </form>
 
   <!-- Toggle button -->
-  <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+  <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
   aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
   >
   <i class="fas fa-bars"></i>
   </button>
-
-  <div class="collapse navbar-collapse justify-content-between" id="navbarData">
-  <div class="container">
-  <ul class="navbar-nav justify-content-center">
-  <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
-  <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
-  <li class="nav-item"><a class="nav-link" href="/events">Events</a></li>
-  <li class="nav-item"><a class="nav-link" href="/go">GO's and Forms</a></li>
-  <li class="nav-item"><a class="nav-link" href="/issues">Raise an Issue</a></li>
-  <li class="nav-item"><a class="nav-link" href="/about">About us</a></li>
-  </ul>
-  </div>
-  </div>
   <!-- Right links -->
   </div>
   <!-- Container wrapper -->
@@ -126,7 +122,7 @@ margin-bottom: 10px;
                 {% csrf_token %}
                 <div class="form">
                 <div class="form-outline mb-4">
-                <input type="text" name="event_name" title="event_name" class="form-control" />
+                <input type="text" name="event_name" title="event_name" class="form-control" style="border: 1px solid black" />
                 <label for="event_name" class="form-label">Event Name</label>
                 </div>
                 <div class="form-outline mb-4">
@@ -136,6 +132,7 @@ margin-bottom: 10px;
                 cols="30"
                 class="form-control"
                 rows="10"
+                style="border: 1px solid black"
                 ></textarea>
                 <label for="event_body" class="form-label">Event Description</label>
                 </div>
@@ -150,11 +147,13 @@ margin-bottom: 10px;
                 />
                 </div>
                 <div class="form-outline mb-4">
+                <label class="form-label">Date: </label>
                 <input
                 type="datetime-local"
                 name="event_date"
                 title="event_date"
                 class="form-control"
+                style="border: 1px solid black"
                 />
                 </div>
                 <div class="form-outline mb-4 text-center">
