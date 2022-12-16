@@ -12,32 +12,44 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/fa.css' %}">
     <script src="{% static 'js/mdb.min.js' %}"></script>
+<style>
+.m-top{
+margin-top: 58px;!important
+}
+.card{
+max-width: 75%;
+}@media (max-width:991.8px){
+.m-top{
+margin-top: 100px;!important
+}
+}
+</style>
 </head>
 <body>
     <!--Main Navigation-->
-    <header>
+<header>
 <!-- Sidebar -->
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-          <div class="position-sticky">
-            <div class="list-group list-group-flush mx-3 mt-4">
-              <a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
-                <i class="fa fa-home fa-fw me-3"></i><span>Home</span>
-              </a>
-              <a href="news" class="list-group-item list-group-item-action py-2 ripple ">
-                <i class="fa fa-newspaper fa-fw me-3"></i><span>News</span>
-              </a>
-              <a href="events" class="list-group-item list-group-item-action py-2 ripple active"><i
-                  class="fas fa-image fa-fw me-3"></i><span>Events</span></a>
-              <a href="go" class="list-group-item list-group-item-action py-2 ripple"><i
-                  class="fas fa-file fa-fw me-3"></i><span>GO's and Forms</span></a>
-              <a href="issues" class="list-group-item list-group-item-action py-2 ripple">
-              <i class="fa-solid fa-circle-exclamation fa-fw me-3"></i><span>Raise an Issue</span>
-              </a>
-              <a href="about" class="list-group-item list-group-item-action py-2 ripple">
-              <i class="fas fa-address-card fa-fw me-3"></i><span>About us</span>
-              </a>
-            </div>
-          </div>
+<div class="position-sticky">
+<div class="list-group list-group-flush mx-3 mt-4">
+<a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+<i class="fa fa-home fa-fw me-3"></i><span>Home</span>
+</a>
+<a href="news" class="list-group-item list-group-item-action py-2 ripple ">
+<i class="fa fa-newspaper fa-fw me-3"></i><span>News</span>
+</a>
+<a href="events" class="list-group-item list-group-item-action py-2 ripple active"><i
+class="fas fa-image fa-fw me-3"></i><span>Events</span></a>
+<a href="go" class="list-group-item list-group-item-action py-2 ripple"><i
+class="fas fa-file fa-fw me-3"></i><span>GO's and Forms</span></a>
+<a href="issues" class="list-group-item list-group-item-action py-2 ripple">
+<i class="fa-solid fa-circle-exclamation fa-fw me-3"></i><span>Raise an Issue</span>
+</a>
+<a href="about" class="list-group-item list-group-item-action py-2 ripple">
+<i class="fas fa-address-card fa-fw me-3"></i><span>About us</span>
+</a>
+</div>
+</div>
 </nav>
 <!-- Sidebar -->
 
@@ -47,12 +59,13 @@
 <div class="container-fluid justify-content-around">
 
 <div class="navbar-brand">
+<img src="{% static 'img/logo.png' %}" width="45">
 <h3>
 STU Kakinada
 </h3>
 </div>
 
-<form class="d-flex input-group w-auto" action="search">
+<form class="d-flex input-group w-auto" action="search" id="search_form">
 <input
 type="search"
 class="form-control rounded"
@@ -61,16 +74,13 @@ aria-label="Search"
 aria-describedby="search-addon"
 name="q"
 />
-<span class="input-group-text border-0" id="search-addon">
-<i class="fas fa-search"></i>
-</span>
 </form>
 
 <!-- Toggle button -->
 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
 aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
 >
-<img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
+<i class="fas fa-bars"></i>
 </button>
 
 <div class="collapse navbar-collapse justify-content-between" id="navbarData">
@@ -90,15 +100,15 @@ aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
 <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
-    </header>
+</header>
       <!--Main Navigation-->
 
       <!--Main layout-->
-      <main style="margin-top: 58px;">
+      <main class="m-top">
         <div class="container pt-4">
         <div class="row">
         <div class="col">
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
         <h3 align="right">
         All Events
         </h3>
@@ -108,7 +118,7 @@ aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
         </h3>
         {% endif %}
         </div>
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
         <div class="col">
         <h3 align="right">
         <a href="upload/events" style="color: black;"> Add Event </a>
@@ -117,42 +127,45 @@ aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
         {% endif %}
         </div>
         <div class="container-fluid">
-        <div class="row">
+        <div class="row" align="center">
+        {% if data.first %}
         <div class="col">
         {% for post in data.first reversed %}
-        <div class="card m-4">
-        <div class="card-header" style="font-size: x-large;">
+        <div class="card mt-4 mb-4">
+        <div class="card-header" style="font-size: large;">
         <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
         </div>
-        <div class="card-body">
+        <div class="card-body" align="left">
         <p class="card-text">{{post.body|truncatewords:20}}</p>
         </div>
 
-        <div class="card-footer">
-        Posted at: {{post.created_at}}
+        <div class="card-footer" align="right" style="font-size: small;">
+        {{post.created_at}}
         </div>
 
         </div>
         {% endfor %}
         </div>
+        {% endif %}
+        {% if data.second %}
         <div class="col">
         {% for post in data.second reversed %}
-        <div class="card m-4">
-        <div class="card-header" style="font-size: x-large;">
+        <div class="card mt-4 mb-4">
+        <div class="card-header" style="font-size: large;">
         <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
         </div>
-        <div class="card-body">
+        <div class="card-body" align="left">
         <p class="card-text">{{post.body|truncatewords:20}}</p>
         </div>
 
-        <div class="card-footer">
-        Posted at: {{post.created_at}}
+        <div class="card-footer" align="right" style="font-size: small;">
+        {{post.created_at}}
         </div>
 
         </div>
         {% endfor %}
         </div>
-
+        {% endif %}
         </div>
         </div>
         </div>

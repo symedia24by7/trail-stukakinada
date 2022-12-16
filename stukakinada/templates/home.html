@@ -12,6 +12,28 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/fa.css' %}">
     <script src="{% static 'js/mdb.min.js' %}"></script>
+
+    <style>
+    .m-top{
+        margin-top: 58px;!important
+    }
+    .f-wid{
+        width: 50%;!important
+    }
+    @media (max-width:991.8px){
+        .m-top{
+            margin-top: 100px;!important
+        }
+        .card{
+            min-width: 256px;
+        }
+
+        .f-wid{
+            width: 100%;!important
+        }
+    }
+    </style>
+
 </head>
 <body>
     <!--Main Navigation-->
@@ -47,7 +69,8 @@
           <div class="container-fluid justify-content-around">
 
             <div class="navbar-brand">
-              <h3>
+            <img src="{% static 'img/logo.png' %}" width="45">
+            <h3>
                 STU Kakinada
               </h3>
             </div>
@@ -61,16 +84,13 @@
           aria-describedby="search-addon"
           name="q"
           />
-          <span class="input-group-text border-0" id="search-addon">
-          <i class="fa fa-search"></i>
-          </span>
           </form>
 
             <!-- Toggle button -->
             <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
               aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
               >
-              <img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
+              <i class="fas fa-bars"></i>
             </button>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarData">
@@ -94,7 +114,7 @@
       <!--Main Navigation-->
 
       <!--Main layout-->
-      <main style="margin-top: 58px;">
+      <main class="m-top">
         <div class="container pt-4" align="center">
           <!-- Carousel wrapper -->
           <div id="carouselMaterialStyle" class="carousel slide carousel-dark w-75" data-mdb-ride="carousel">
@@ -104,30 +124,21 @@
               <!-- Single item -->
               <div class="carousel-item active">
                 <img src="{% static 'img/banner_stu_kkd.jpeg' %}" class="d-block cimg w-100"
-                  alt="Sunset Over the City" height="300"/>
-                <div class="carousel-caption d-none d-md-block">
-
-                </div>
+                  alt="STU Kakinada Banner Logo" height="300"/>
               </div>
 
             <div class="carousel-item">
             <a href="{{data.caro_events.link}}">
             <img src="{{data.caro_events.image.image.url}}" class="d-block cimg w-100"
-            alt="Sunset Over the City" height="300"/>
+            alt="Nothing Found" height="300"/>
             </a>
-                <div class="carousel-caption d-none d-md-block">
-
-                </div>
             </div>
 
             <div class="carousel-item ">
                  <a href="{{data.caro_news.link}}">
             <img src="{{data.caro_news.image.image.url}}" class="d-block cimg w-100"
-            alt="Sunset Over the City" height="300"/>
+            alt="Nothing Found" height="300"/>
                  </a>
-                <div class="carousel-caption d-none d-md-block">
-
-                </div>
             </div>
 
 
@@ -156,7 +167,7 @@
                     </div>
                 <div class="col px-5" align="right">
                     <h2>
-                        <a href="/news" style="text-decoration: underline; color: black; font-size: x-large;">View All</a>
+                        <a href="/news" style="text-decoration: underline; color: black; font-size: large;">View All</a>
                     </h2>
                 </div>
                 </div>
@@ -164,22 +175,30 @@
 
             <div class="container-fluid">
                 <div class="row">
+                {% if data.posts %}
                 {% for post in data.posts %}
                 <div class="col m-2">
                     <div class="card h-100">
-                        <div class="card-header" style="font-size: x-large;">
+                        <div class="card-header" style="font-size: large;">
                             <a href="/news/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" align="left">
                             <p class="card-text">{{post.body|truncatewords:20}}</p>
                         </div>
-                        <div class="card-footer">
-                            Posted at: {{post.created_at}}
+                    <div class="card-footer" style="font-size: small" align="right">
+                            {{post.created_at}}
                         </div>
 
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                <div class="col m-2">
+                <h4>
+                    Nothing Found
+                </h4>
+                </div>
+                {% endif %}
                 </div>
             </div>
 
@@ -195,7 +214,7 @@
                     </div>
                 <div class="col px-5" align="right">
                     <h2>
-                        <a href="/events" style="text-decoration: underline; color: black; font-size: x-large;">View All</a>
+                        <a href="/events" style="text-decoration: underline; color: black; font-size: large;">View All</a>
                     </h2>
                 </div>
                 </div>
@@ -203,10 +222,11 @@
 
             <div class="container-fluid">
             <div class="row">
+                {% if data.events %}
                 {% for post in data.events %}
                 <div class="col m-2">
                     <div class="card h-100">
-                        <div class="card-header" style="font-size: x-large;">
+                        <div class="card-header" style="font-size: large;">
                             <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
                         </div>
                         {% if post.hasImage %}
@@ -214,41 +234,66 @@
                             <img class="card-img" src={{post.img.image.url}} style="height: 25vh; width: auto;">
                         </div>
                         {% else %}
-                        <div class="card-body">
+                        <div class="card-body" align="left">
                             <p class="card-text">{{post.body|truncatewords:20}}</p>
                         </div>
                         {% endif %}
-                        <div class="card-footer">
-                            Posted at: {{post.created_at}}
+                        <div class="card-footer"  style="font-size: small" align="right">
+                            {{post.created_at}}
                         </div>
 
                     </div>
                 </div>
                 {% endfor %}
+                {% else %}
+                <div class="col m-2">
+                <h4>
+                Nothing Found
+                </h4>
+                </div>
+                {% endif %}
                 </div>
             </div>
 
           </section>
 
-          <section class="GOs_and_Pdfs pt-4 ps-4 pb-5">
-            <h3 align="left" class="pt-2, pb-2">
-              Latest PDF's, GO's and Forms
-            </h3>
-            <h4 align="left">
-                Click To Download
-            </h4>
+          <section class="GOs_and_Pdfs pt-2">
+          <div class="container-fluid ">
+          <div class="row">
+          <div class="col mx-3" align="left">
+          <h2>
+          Latest PDF's, GO's and Forms
+          </h2>
+          </div>
+          <div class="row">
+          <div class="col mx-3" align="left">
+          <h5>
+          Click to Download
+          </h5>
+          </div>
+          </div>
+          </div>
+          </div>
             <div class="list-group list-group-flush pt-4" >
                 <div class="container-fluid">
-                    <div class="row w-75">
-                        <div class="col">
+                    <div class="row">
+                    {% if data.files %}
+                        <div class="col m-2">
                         {% for file in data.files %}
                         <a href="{{file.file.url}}">
-                        <button type="button" class="list-group-item list-group-item-action ripple text-center p-3 m-2">
+                        <button type="button" class="list-group-item list-group-item-action f-wid ripple text-center file-download">
                         {{file.filename}}
                         </button>
                         </a>
                         {% endfor %}
                         </div>
+                        {% else %}
+                    <div class="col m-2">
+                    <h4>
+                    Nothing Found
+                    </h4>
+                    </div>
+                    {% endif %}
                     </div>
                 </div>
             </div>

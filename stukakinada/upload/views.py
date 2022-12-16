@@ -6,7 +6,7 @@ from go.models import File
 # Create your views here.
 
 def news(request):
-    if not auth.get_user(request).is_authenticated:
+    if not auth.get_user(request).is_superuser:
         return redirect('home')
 
     if request.method == "POST":
@@ -28,7 +28,7 @@ def news(request):
     return render(request, 'upload_news.html')
 
 def events(request):
-    if not auth.get_user(request).is_authenticated:
+    if not auth.get_user(request).is_superuser:
         return redirect('home')
     if request.method == "POST":
         event_name = request.POST["event_name"]
@@ -49,7 +49,7 @@ def events(request):
 
 
 def file(request):
-    if not auth.get_user(request).is_authenticated:
+    if not auth.get_user(request).is_superuser:
         return redirect('home')
 
     if request.method == "POST":

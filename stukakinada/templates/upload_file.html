@@ -12,6 +12,23 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
 <link rel="stylesheet" href="{% static 'css/fa.css' %}">
 <script src="{% static 'js/mdb.min.js' %}"></script>
+
+<style>
+.c-width{
+margin-top: 12.5%;
+width: 30%;!important
+}
+@media (max-width: 991.8px){
+.c-width{
+margin-top: 50px;
+width: 100%; !important
+}
+}
+.m-top{
+margin-top: 58px;
+}
+</style>
+
 </head>
 <body>
 <!--Main Navigation-->
@@ -20,7 +37,7 @@
 <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
 <div class="position-sticky">
 <div class="list-group list-group-flush mx-3 mt-4">
-<a href="/home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
+<a href="/home" class="list-group-item list-group-item-action py-2 ripple" >
 <i class="fa fa-home fa-fw me-3"></i><span>Home</span>
 </a>
 <a href="/news" class="list-group-item list-group-item-action py-2 ripple ">
@@ -42,17 +59,18 @@ class="fas fa-file fa-fw me-3"></i><span>GO's and Forms</span></a>
 <!-- Sidebar -->
 
 <!-- Navbar -->
-<nav
-id="main-navbar"
-class="navbar navbar-expand-lg navbar-light bg-white fixed-top"
->
+<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
 <!-- Container wrapper -->
 <div class="container-fluid justify-content-around">
+
 <div class="navbar-brand">
-<h3>STU Kakinada</h3>
+<img src="{% static 'img/logo.png' %}" width="45">
+<h3>
+STU Kakinada
+</h3>
 </div>
 
-<form class="d-flex input-group w-auto" action="search">
+<form class="d-flex input-group w-auto" action="search" id="search_form">
 <input
 type="search"
 class="form-control rounded"
@@ -61,52 +79,24 @@ aria-label="Search"
 aria-describedby="search-addon"
 name="q"
 />
-<span class="input-group-text border-0" id="search-addon">
-<i class="fas fa-search"></i>
-</span>
 </form>
 
 <!-- Toggle button -->
-<button
-class="navbar-toggler"
-type="button"
-data-mdb-toggle="collapse"
-data-mdb-target="#navbarData"
-aria-controls="sidebarMenu"
-aria-expanded="false"
-aria-label="Toggle navigation"
+<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
 >
-<img
-src="{% static 'img/toggle.webp' %}"
-alt=""
-style="width: 3rem;"
-/>
+<i class="fas fa-bars"></i>
 </button>
 
-<div
-class="collapse navbar-collapse justify-content-between"
-id="navbarData"
->
+<div class="collapse navbar-collapse justify-content-between" id="navbarData">
 <div class="container">
 <ul class="navbar-nav justify-content-center">
-<li class="nav-item">
-<a class="nav-link" href="/home">Home</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="/news">News</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="/events">Events</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="/go">GO's and Forms</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="/issues">Raise an Issue</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="/about">About us</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+<li class="nav-item"><a class="nav-link" href="/events">Events</a></li>
+<li class="nav-item"><a class="nav-link" href="/go">GO's and Forms</a></li>
+<li class="nav-item"><a class="nav-link" href="/issues">Raise an Issue</a></li>
+<li class="nav-item"><a class="nav-link" href="/about">About us</a></li>
 </ul>
 </div>
 </div>
@@ -119,11 +109,14 @@ id="navbarData"
 <!--Main Navigation-->
 
 <!--Main layout-->
-<main style="margin-top: 58px;">
+<main class="m-top">
 <div class="container pt-4">
-<section>
+<div align="center">
+
+<div class="card text-start c-width">
+<div class="card-body ">
 <div class="news">
-<h3 align="center">Add File</h3>
+<h3 align="center">Add News Article</h3>
 <form
 action="file"
 method="post"
@@ -131,24 +124,29 @@ enctype="multipart/form-data"
 >
 {% csrf_token %}
 <div class="form">
-<div class="file_name p-2">
-<label for="file_name">File Name</label>
-<input type="text" name="file_name" title="file_name" />
+<div class="form-outline mb-4">
+<input type="text" name="file_name" title="file_name" class="form-control" />
+<label for="file_name" class="form-label">File Name</label>
 </div>
-<div class="file_file p-2">
-<label for="image">Image</label>
+<div class="form-outline mb-4">
+<label for="image" class="form-label">Select File to Upload</label>
 <input
-title="image"
+title="file"
 name="file_file"
 type="file"
-class="form-control-file"
+class="form-file-text"
 />
 </div>
-<button type="submit">Submit</button>
+<div class="form-outline mb-4 text-center">
+<button class="w-50" type="submit">Submit</button>
+</div>
 </div>
 </form>
 </div>
-</section>
+</div>
+</div>
+
+</div>
 </div>
 </main>
 <!--Main layout-->

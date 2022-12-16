@@ -12,12 +12,24 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="{% static 'css/fa.css' %}">
     <script src="{% static 'js/mdb.min.js' %}"></script>
+
+<style>
+.m-top{
+margin-top: 58px;!important
+}
+@media (max-width:991.8px){
+.m-top{
+margin-top: 100px;!important
+}
+}
+</style>
+
 </head>
 <body>
     <!--Main Navigation-->
     <header>
-<!-- Sidebar -->
-<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <!-- Sidebar -->
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
               <a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
@@ -38,67 +50,65 @@
               </a>
             </div>
           </div>
-</nav>
-<!-- Sidebar -->
+        </nav>
+        <!-- Sidebar -->
 
-<!-- Navbar -->
-<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-<!-- Container wrapper -->
-<div class="container-fluid justify-content-around">
+        <!-- Navbar -->
+        <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+          <!-- Container wrapper -->
+          <div class="container-fluid justify-content-around">
 
-<div class="navbar-brand">
-<h3>
-STU Kakinada
-</h3>
-</div>
+            <div class="navbar-brand">
+            <img src="{% static 'img/logo.png' %}" width="45">
+            <h3>
+                STU Kakinada
+              </h3>
+            </div>
 
-<form class="d-flex input-group w-auto" action="search">
-<input
-type="search"
-class="form-control rounded"
-placeholder="Search"
-aria-label="Search"
-aria-describedby="search-addon"
-name="q"
-/>
-<span class="input-group-text border-0" id="search-addon">
-<i class="fas fa-search"></i>
-</span>
-</form>
+          <form class="d-flex input-group w-auto" action="search" id="search_form">
+          <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          name="q"
+          />
+          </form>
 
-<!-- Toggle button -->
-<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
-aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
->
-<img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
-</button>
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+              aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
+              >
+              <i class="fas fa-bars"></i>
+            </button>
 
-<div class="collapse navbar-collapse justify-content-between" id="navbarData">
-<div class="container">
-<ul class="navbar-nav justify-content-center">
-<li class="nav-item"><a class="nav-link" href="home">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="news">News</a></li>
-<li class="nav-item"><a class="nav-link" href="events">Events</a></li>
-<li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
-<li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
-<li class="nav-item"><a class="nav-link" href="about">About us</a></li>
-</ul>
-</div>
-</div>
-<!-- Right links -->
-</div>
-<!-- Container wrapper -->
-</nav>
-<!-- Navbar -->
+                <div class="collapse navbar-collapse justify-content-between" id="navbarData">
+              <div class="container">
+                  <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about">About us</a></li>
+                  </ul>
+              </div>
+            </div>
+            <!-- Right links -->
+          </div>
+          <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
     </header>
       <!--Main Navigation-->
 
       <!--Main layout-->
-      <main style="margin-top: 58px;">
+      <main class="m-top">
         <div class="container pt-4">
         <div class="row">
         <div class="col">
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
         <h3 align="right">
         Files Available to Download
         </h3>
@@ -108,7 +118,7 @@ aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
         </h3>
         {% endif %}
         </div>
-        {% if user.is_authenticated %}
+        {% if user.is_superuser %}
         <div class="col">
         <h3 align="right">
         <a href="upload/file" style="color: black;"> Add New File </a>

@@ -14,12 +14,21 @@
     <link rel="stylesheet" href="{% static 'css/fa.css' %}">
 
     <style>
-        img{
+    .img-pic{
             position: relative;
             border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%; border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%;
             aspect-ratio: 1;
             width: 250px;
         }
+      .m-top{
+      margin-top: 58px;!important
+      }
+      @media (max-width:991.8px){
+      .m-top{
+      margin-top: 100px;!important
+      }
+      }
+
     </style>
 
 </head>
@@ -53,66 +62,64 @@
 
         <!-- Navbar -->
         <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <!-- Container wrapper -->
-        <div class="container-fluid justify-content-around">
+          <!-- Container wrapper -->
+          <div class="container-fluid justify-content-around">
 
-        <div class="navbar-brand">
-        <h3>
-        STU Kakinada
-        </h3>
-        </div>
+            <div class="navbar-brand">
+            <img src="{% static 'img/logo.png' %}" width="45">
+            <h3>
+                STU Kakinada
+              </h3>
+            </div>
 
-        <form class="d-flex input-group w-auto" action="search">
-        <input
-        type="search"
-        class="form-control rounded"
-        placeholder="Search"
-        aria-label="Search"
-        aria-describedby="search-addon"
-        name="q"
-        />
-        <span class="input-group-text border-0" id="search-addon">
-        <i class="fas fa-search"></i>
-        </span>
-        </form>
+          <form class="d-flex input-group w-auto" action="search" id="search_form">
+          <input
+          type="search"
+          class="form-control rounded"
+          placeholder="Search"
+          aria-label="Search"
+          aria-describedby="search-addon"
+          name="q"
+          />
+          </form>
 
-        <!-- Toggle button -->
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
-        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
-        >
-        <img src="{% static 'img/toggle.webp' %}" alt="" style="width: 3rem;">
-        </button>
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarData"
+              aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"
+              >
+              <i class="fas fa-bars"></i>
+            </button>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarData">
-        <div class="container">
-        <ul class="navbar-nav text-center">
-        <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="news">News</a></li>
-        <li class="nav-item"><a class="nav-link" href="events">Events</a></li>
-        <li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
-        <li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
-        <li class="nav-item"><a class="nav-link" href="about">About us</a></li>
-        </ul>
-        </div>
-        </div>
-        <!-- Right links -->
-        </div>
-        <!-- Container wrapper -->
+                <div class="collapse navbar-collapse justify-content-between" id="navbarData">
+              <div class="container">
+                  <ul class="navbar-nav justify-content-center">
+                    <li class="nav-item"><a class="nav-link" href="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="news">News</a></li>
+                    <li class="nav-item"><a class="nav-link" href="events">Events</a></li>
+                    <li class="nav-item"><a class="nav-link" href="go">GO's and Forms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="issues">Raise an Issue</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about">About us</a></li>
+                  </ul>
+              </div>
+            </div>
+            <!-- Right links -->
+          </div>
+          <!-- Container wrapper -->
         </nav>
         <!-- Navbar -->
-        </header>
-        <main style="margin-top: 58px;">
+    </header>
+        <main class="m-top">
             <div class="container pt-4">
                 <div class="row">
                 <div class="col-12 col-md-6 ">
                         <div class="card m-2 text-center">
                             <div class="bg-image hover-overlay" data-mdb-ripple-color="light">
-                              <img src="{% static '/img/yagna.jpg'%}" class="img-fluid p-2"/>
+                            <img src="{% static 'img/yagna.jpg'%}" class="img-fluid p-2 img-pic"/>
                             </div>
                             <div class="card-body">
                               <h5 class="card-title">Yagna Kusumanchi @SYMedia</h5>
                               <p class="card-text">Python Programmer and Frontend Developer</p>
-                              <a href="mailto:Yagna82kb@gmail.com" class="link-dark">Yagna82kb@gmail.com</a> <br><br>
+                              <a href="mailto:Yagna82kb@gmail.com" class="link-dark">yagna82kb@gmail.com</a> <br><br>
                               <a href="tel:+919014976938" class="link-dark">+919014976938</a>
                             </div>
                           </div>
@@ -120,7 +127,7 @@
                 <div class=" col-12 col-md-6">
                         <div class="card m-2 text-center">
                             <div class="bg-image hover-overlay" data-mdb-ripple-color="light">
-                              <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/111.webp" class="img-fluid p-2"/>
+                              <img src="{% static 'img/sam.jpg' %}" class="img-fluid p-2 img-pic"/>
                             </div>
                             <div class="card-body">
                               <h5 class="card-title">Samba Siva Rao Kovvuru @SYMedia</h5>

@@ -39,7 +39,12 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }
 
 .carousel-item img{
-    max-height: 25vh;
+    max-height: 35vh;
+}
+
+.file-download:hover{
+    text-decoration: underline;
+    color: red;
 }
 
 #navbarData{
