@@ -6,7 +6,23 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Upload a New Event</title>
+<meta property="og:site_name" content="STU Kakinada" />
+<meta property="og:title" content="{{data.posts.title}}" />
+<meta property="og:description" content="{{data.posts.body|truncatewords:25}}" />
+<meta property="og:url" content="https:://codewithsam110g.pythonanywhere.com/news/{{data.posts.id}}" />
+<meta property="og:type" content="article" />
+<meta property="article:publisher" content="https://codewithsam110g.pythonanywhere.com/home" />
+<meta property="article:section" content="News" />
+<meta property="article:tag" content="News" />
+<meta property="og:image" content="https://codewithsam110g.pythonanywhere.com/static/img/logo.png" />
+<meta property="og:image:secure_url" content="https://codewithsam110g.pythonanywhere.com/static/img/logo.png" />
+<meta property="og:image:width" content="300" />
+<meta property="og:image:height" content="300" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://codewithsam110g.pythonanywhere.com/static/img/logo.png" />
+<meta property="twitter:site" content="@codwithsam110g" />
+<title>{{data.posts.title}}</title>
+
 
 <link rel="stylesheet" href="{% static 'css/mdb.min.css' %}" />
 <link rel="stylesheet" href="{% static 'css/home.css' %}" />
