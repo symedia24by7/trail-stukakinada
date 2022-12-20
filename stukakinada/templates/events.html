@@ -23,6 +23,12 @@ max-width: 75%;
 .jca{
     justify-content:flex-start!important
 }
+.l-align{
+text-align: left;
+}
+.r-align{
+text-align: match-parent;
+}
 @media (max-width:991.8px){
 .m-top{
 margin-top: 100px;!important
@@ -32,6 +38,12 @@ margin-top: 100px;!important
 }
 .jca{
 justify-content:space-around!important
+}
+.l-align{
+text-align: center;
+}
+.r-align{
+text-align: center;
 }
 }
 </style>
@@ -71,8 +83,8 @@ class="fas fa-file fa-fw me-3"></i><span>GO's and Forms</span></a>
 <div class="container-fluid jca">
 
 <div class="navbar-brand">
-<img src="{% static 'img/logo.png' %}" width="45">
-<h3>
+<img src="{% static 'img/logo.png' %}" width="45" class="ms-2 me-3">
+<h3 style="font-weight: 600">
 STU Kakinada
 </h3>
 </div>
@@ -127,13 +139,13 @@ All Events
 </div>
 
 <div class="container-fluid">
-<div class="row" align="center">
+<div class="row"  align="right">
 {% if data.first %}
-<div class="col">
+<div class="col r-align">
 {% for post in data.first reversed %}
 <div class="col mt-4 mb-4">
 <div class="card h-100"  style="min-width: 256px;">
-<div class="card-header" style="font-size: large;">
+<div class="card-header" style="font-size: large;"  align="center">
 <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
 </div>
 <div class="card-body" align="left">
@@ -149,11 +161,11 @@ All Events
 </div>
 {% endif %}
 {% if data.second %}
-<div class="col">
+<div class="col l-align">
 {% for post in data.second reversed %}
 <div class="col mt-4 mb-4">
 <div class="card h-100" style="min-width: 256px;">
-<div class="card-header" style="font-size: large;">
+<div class="card-header" style="font-size: large;" align="center">
 <a href="/events/{{post.id}}" style="text-decoration: none; color: black;">{{post.title}}</a>
 </div>
 <div class="card-body" align="left">

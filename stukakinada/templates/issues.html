@@ -20,6 +20,14 @@ width: 50%;!important
 .jca{
 justify-content:flex-start!important
 }
+.form-outline .form-control:focus~.form-label{
+background-color:white;
+color:#3b71ca;
+padding:0 10px;
+}
+.form-outline .form-control:focus, .form-outline .form-control~.form-label:not(:placeholder-shown){
+background-color: white;
+}
 @media (max-width: 991.8px){
 .c-width{
 margin-top: 50px;
@@ -74,8 +82,8 @@ margin-bottom: 10px;
           <div class="container-fluid jca">
 
             <div class="navbar-brand">
-            <img src="{% static 'img/logo.png' %}" width="45">
-            <h3>
+            <img src="{% static 'img/logo.png' %}" width="45" class="ms-2 me-3">
+            <h3 style="font-weight: 600">
                 STU Kakinada
               </h3>
             </div>
@@ -122,7 +130,7 @@ margin-bottom: 10px;
                 {% csrf_token %}
                 <div class="form">
                 <div class="form-outline mb-4">
-                <input type="text" name="issue_title" title="issue_title" class="form-control" style="border: 1px solid black"/>
+                <input type="text" name="issue_title" title="issue_title" class="form-control" style="outline:1px solid black;"/>
                 <label for="issue_title" class="form-label">Issue Title</label>
                 </div>
                 <div class="form-outline mb-4">
@@ -131,7 +139,7 @@ margin-bottom: 10px;
                 name="issue_contact"
                 title="issue_contact"
                 class="form-control"
-                style="border: 1px solid black"
+                style="outline:1px solid black;"
                 />
                 <label for="issue_contact" class="form-label">Mobile No: </label>
                 </div>
@@ -142,7 +150,7 @@ margin-bottom: 10px;
                 cols="30"
                 class="form-control"
                 rows="10"
-                style="border: 1px solid black"
+                style="outline:1px solid black;"
                 ></textarea>
                 <label for="issue_body" class="form-label">Describe the Issue</label>
                 </div>
