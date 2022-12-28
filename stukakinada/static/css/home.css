@@ -46,15 +46,3 @@ overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     text-decoration: underline;
     color: red;
 }
-
-#navbarData{
-    visibility: hidden;
-}
-
-@media (max-width: 991.8px){
-
-    #navbarData{
-        visibility: visible;
-    }
-
-}

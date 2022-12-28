@@ -40,10 +40,13 @@ margin-top: 100px;!important
 justify-content:space-around!important
 }
 .l-align{
-text-align: center;
+    text-align: center;
 }
 .r-align{
-text-align: center;
+    text-align: center;
+}
+.col.mt-4.mb-4{
+    text-align: match-parent;
 }
 }
 </style>
@@ -53,8 +56,8 @@ text-align: center;
     <!--Main Navigation-->
 <header>
         <!-- Sidebar -->
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-          <div class="position-sticky">
+        <nav id="sidebarMenu" class="collapse d-lg-block sidebar bg-white">
+          <div class="sidebar-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
               <a href="home" class="list-group-item list-group-item-action py-2 ripple" aria-current="true">
                 <i class="fa fa-home fa-fw me-3"></i><span>Home</span>
@@ -161,7 +164,7 @@ text-align: center;
                 </div>
                     {% endif %}
                     {% if data.second %}
-            <div class="col l-align">
+                <div class="col l-align">
                     {% for post in data.second reversed %}
                     <div class="col mt-4 mb-4">
                     <div class="card h-100" style="min-width: 256px;">
